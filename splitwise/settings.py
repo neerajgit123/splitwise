@@ -154,7 +154,7 @@ CELERY_RESULT_BACKEND = "redis://redis:6379"
 CELERY_BEAT_SCHEDULE = {
         'send-email-every-7days': {
         'task': 'split.tasks.send_mail_every_7days',
-        'schedule': datetime.timedelta(seconds=1)
+        'schedule': datetime.timedelta(days=7)
        },
 }
 

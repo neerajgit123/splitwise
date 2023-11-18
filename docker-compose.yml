@@ -1,0 +1,26 @@
+version: "3.8"
+
+services:
+  web:
+    build: .
+    command: "python manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - .:/project
+    ports:
+      - "8000:8000"
+
+  redis:
+    image: redis:alpine
+    ports:
+      - "6378:6379"
+  celery:
+    restart: always
+    container_name: hello-celery
+    build:
+      context: .
+    command: python -m celery -A splitwise worker -l info -B
+    volumes:
+      - .:/project
+    depends_on:
+      - redis
+      - web

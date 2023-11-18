@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+<body>
+    <p>Hello, {{user_name}}</p>
+
+    <p>Here's a breakdown of the total amount owed to you by each user for the week ending {{past_date}} to {{current_date}}:.</p>
+   
+    <ul>
+        {% for user in users %}
+        <li>
+            {{user.user}} : {{user.balance}}
+        </li>
+        {% endfor %}
+    </ul>
+    <p>The total amount owed to you this week is: {{total_amount}}.</p>
+    <br>
+    <p>Thank you!</p>
+</body>
+</html>
+
+
+
+
+
